@@ -108,7 +108,8 @@ Crie o arquivo `.env` em `cmd/server/` conforme o exemplo acima.
 
 ```bash
 go install github.com/swaggo/swag/cmd/swag@latest
-swag init
+cd cmd/server
+swag init -g main.go
 ```
 
 ### 5. Inicie o servidor
