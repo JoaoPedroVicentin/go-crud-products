@@ -18,7 +18,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// @title Go Expert API Example
+// @title CRUD Products
 // @version 1.0
 // @description Product API with Authentication
 // @termsOfService http://swagger.io/terms/
@@ -30,7 +30,6 @@ import (
 // @license.name Full Cycle License
 // @license.url http://www.fullcycle.com.br
 
-// @host localhost:8080
 // @BasePath /
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
@@ -71,9 +70,9 @@ func main() {
 	r.Post("/users", userHandler.CreateUser)
 	r.Post("/users/generate-token", userHandler.GetJwt)
 
-	r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL("http://localhost:8080/docs/doc.json")))
+	r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL("http://localhost:"+configs.WebServerPort+"/docs/doc.json")))
 
-	http.ListenAndServe(":8080", r)
+	http.ListenAndServe(":"+configs.WebServerPort, r)
 }
 
 func LogRequest(next http.Handler) http.Handler {

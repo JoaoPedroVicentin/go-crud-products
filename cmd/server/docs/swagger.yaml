@@ -1,0 +1,20 @@
+basePath: /
+info:
+  contact:
+    email: atendimento@fullcycle.com.br
+    name: João Pedro Vicentin
+    url: http://www.fullcycle.com.br
+  description: Product API with Authentication
+  license:
+    name: Full Cycle License
+    url: http://www.fullcycle.com.br
+  termsOfService: http://swagger.io/terms/
+  title: CRUD Products
+  version: "1.0"
+paths: {}
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

@@ -20,16 +20,25 @@ Este projeto é uma API REST desenvolvida em **Go (Golang)** que oferece um CRUD
 A documentação Swagger está disponível em:
 
 ```
-http://localhost:8080/swagger/index.html
+http://localhost:PORT/swagger/index.html
 ```
+
+> Substitua `PORT` pela porta que a aplicação está rodando.
+
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
 - [Go (Golang)](https://golang.org/)
-- [JWT](https://jwt.io/)
+- [Chi](https://github.com/go-chi/chi) – Micro framework HTTP router
+- [JWTAuth](https://github.com/go-chi/jwtauth) – Middleware para autenticação JWT
+- [GORM](https://gorm.io/) – ORM para Go
+- [SQLite](https://www.sqlite.org/) – Banco de dados leve utilizado com GORM
+- [Viper](https://github.com/spf13/viper) – Gerenciador de configurações e variáveis de ambiente
+- [UUID](https://github.com/google/uuid) – Geração de identificadores únicos
+- [Testify](https://github.com/stretchr/testify) – Biblioteca de utilitários para testes
 - [Swaggo](https://github.com/swaggo/swag) – Gerador de documentação Swagger para Go
-- [Gin](https://github.com/gin-gonic/gin) – Framework web para Go (se estiver usando)
+- [HTTP-Swagger](https://github.com/swaggo/http-swagger) – Servidor Swagger UI para visualização da documentação
 
 ---
 
@@ -44,16 +53,31 @@ cmd/server/.env
 ### Exemplo de `.env`:
 
 ```env
+# Tipo de driver do banco de dados (ex: sqlite, postgres, mysql)
 DB_DRIVER=
+
+# Endereço do host do banco de dados
 DB_HOST=
+
+# Porta do banco de dados
 DB_PORT=
+
+# Usuário para acessar o banco de dados
 DB_USER=
+
+# Senha do usuário do banco de dados
 DB_PASSWORD=
+
+# Nome do banco de dados
 DB_NAME=
 
+# Porta onde o servidor web da aplicação será iniciado
 WEB_SERVER_PORT=
 
+# Chave secreta para geração e verificação de tokens JWT
 JWT_SECRET=
+
+# Tempo de expiração do token JWT
 JWT_EXPIRES_IN=
 ```
 
@@ -90,7 +114,8 @@ swag init
 ### 5. Inicie o servidor
 
 ```bash
-go run cmd/server/main.go
+cd cmd/server
+go run main.go
 ```
 
 ---
